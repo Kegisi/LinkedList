@@ -23,8 +23,10 @@ public:
     explicit List(int data);
     ~List();  // Destructor
 
-    void insert(int data, int position = -1);
+    int getSize() const;  // getter
 
+    // Member functions
+    void insert(int data, int position = -1);
     [[nodiscard]] int read(int position) const;
     void modify(int position, int data) const;
     int remove(int position);

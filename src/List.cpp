@@ -46,6 +46,15 @@ List::~List()
 }
 
 /**
+ * Returns the list size
+ * @return current size of the list
+ */
+int List::getSize() const
+{
+    return _size;
+}
+
+/**
  * Inserts a new node into the list
  * @param data value that new node should contain
  * @param position the index to insert the new node
