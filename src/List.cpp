@@ -18,12 +18,12 @@ List::List()
 }
 
 /**
- * Property constructor initializes the list with one node
- * @param node the node to become the head of the list
+ * Property constructor initializes the list with one node of value: data
+ * @param data
  */
-List::List(Node* node)
+List::List(const int data)
 {
-    _head = node;
+    _head = new Node(data, nullptr);
 }
 
 /**
@@ -83,6 +83,31 @@ void List::insert(const int data, const int position = INT_MAX)
 }
 
 /**
+ * Overloading function will insert a node to the end of the list
+ * @param data the value to assign to the new node
+ */
+void List::insert(const int data)
+{
+    Node* newNode = new Node{data, nullptr};
+
+    // if list is empty make the new node the head
+    if (!_head)
+    {
+        _head = newNode;
+        return;
+    }
+
+    // insert at the end
+    Node* pNode = _head;
+    while (pNode->next)
+    {
+        pNode = pNode->next;
+    }
+    pNode->next = newNode;
+
+}
+
+/**
  * Reads the value of a node in the list
  * @param position index of node to read - default is last node
  * @return the value of targeted node
@@ -104,7 +129,7 @@ int List::read(const int position = INT_MAX) const
  * @param data number to change the value of the node to
  * @param position index of node to modify - default is last node
  */
-void List::change(const int data, const int position = INT_MAX) const
+void List::modify(const int data, const int position = INT_MAX) const
 {
     Node* pNode = _head;
     int index = 0;

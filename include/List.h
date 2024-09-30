@@ -16,12 +16,16 @@ class List
     };
     Node* _head;
 public:
+    // Constructors
     List();
-    explicit List(Node* node);
-    ~List();
+    explicit List(int data);
+    ~List();  // Destructor
+
     void insert(int data, int position);
-    int read(int position) const;
-    void change(int data, int position) const;
+    void insert(int data);  //overloaded so I don't have to provide a position
+
+    [[nodiscard]] int read(int position) const;
+    void modify(int data, int position) const;
     int remove(int position);
 };
 
