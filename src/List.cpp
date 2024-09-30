@@ -65,7 +65,7 @@ void List::insert(const int data, int position)
 {
     Node* pNew = new Node{data, nullptr};
 
-    if (position < 0 || position > _size)  // if the provided position is out of scope
+    if (position < 0 || position > _size)  // if given position is out of scope
     {
         position = _size;  // make it the end of the list so we append
     }
@@ -81,7 +81,7 @@ void List::insert(const int data, int position)
     {
         Node* pNode = _head;
         while (pNode->next && position > 1)
-            // when position is one, we've moved up to the node before the target
+            // when position is 1, we've moved up to the node before the target
         {
             pNode = pNode->next;
             position--;
