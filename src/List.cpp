@@ -2,7 +2,7 @@
  * @file List.cpp
  * @author Dennis Kerry
  * @date September 27, 2024
- * @brief Linked list class using nodes
+ * @brief Linked list class member functions
  */
 
 #include "List.h"
@@ -51,7 +51,7 @@ List::~List()
  * - by default, appends to the end of the list
  * - negative numbers target head position
  */
-void List::insert(const int data, const int position = INT_MAX)
+void List::insert(const int data, const int position)
 {
     Node* newNode = new Node{data, nullptr};
 
@@ -73,7 +73,8 @@ void List::insert(const int data, const int position = INT_MAX)
     // insert at a position other than 0
     Node* pNode = _head;
     int index = 0;
-    while (pNode->next && index < position)
+    while (pNode->next && index < position - 1)
+        // subtract 1 because we're pointing to the next node
     {
         pNode = pNode->next;
         index++;
@@ -112,7 +113,7 @@ void List::insert(const int data)
  * @param position index of node to read - default is last node
  * @return the value of targeted node
  */
-int List::read(const int position = INT_MAX) const
+int List::read(const int position) const
 {
     Node* pNode = _head;
     int index = 0;
@@ -129,7 +130,7 @@ int List::read(const int position = INT_MAX) const
  * @param data number to change the value of the node to
  * @param position index of node to modify - default is last node
  */
-void List::modify(const int data, const int position = INT_MAX) const
+void List::modify(const int position, const int data) const
 {
     Node* pNode = _head;
     int index = 0;
@@ -146,7 +147,7 @@ void List::modify(const int data, const int position = INT_MAX) const
  * @param position the index for the node to remove - negative values will target head
  * @return the value of the removed node
  */
-int List::remove(const int position = INT_MAX)
+int List::remove(const int position)
 {
     int removedData;
 

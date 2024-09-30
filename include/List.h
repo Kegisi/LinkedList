@@ -2,6 +2,7 @@
  * @file List.h
  * @author Dennis Kerry
  * @date September 27, 2024
+ * @brief Linked List class member function prototypes
  */
 
 #ifndef LIST_H
@@ -25,7 +26,7 @@ public:
     void insert(int data);  //overloaded so I don't have to provide a position
 
     [[nodiscard]] int read(int position) const;
-    void modify(int data, int position) const;
+    void modify(int position, int data) const;
     int remove(int position);
 };
 
