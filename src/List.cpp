@@ -54,7 +54,7 @@ List::~List()
  */
 void List::insert(const int data, int position)
 {
-    Node* pNewNode = new Node{data, nullptr};
+    Node* pNew = new Node{data, nullptr};
 
     if (position < 0 || position > _size)  // if the provided position is out of scope
     {
@@ -64,8 +64,8 @@ void List::insert(const int data, int position)
     // insert at the start of the list
     if (position == 0)
     {
-        pNewNode->next = _head;
-        _head = pNewNode;
+        pNew->next = _head;
+        _head = pNew;
     }
     // insert anywhere else in the list, including the very end
     else
@@ -77,8 +77,8 @@ void List::insert(const int data, int position)
             pNode = pNode->next;
             position--;
         }
-        pNewNode->next = pNode->next;
-        pNode->next = pNewNode;
+        pNew->next = pNode->next;
+        pNode->next = pNew;
     }
 }
 
