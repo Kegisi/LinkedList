@@ -165,5 +165,6 @@ int List::remove(const int position)
     temp->next = pNode->next;
     removedData = pNode->data;
     delete pNode;
+    _size--;
     return removedData;
 }
