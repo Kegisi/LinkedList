@@ -93,7 +93,8 @@ void List::insert(const int data, int position)
 
 /**
  * Reads the value of a node in the list
- * @param position index of node to read - default is last node
+ * @param position index of node to read
+ * - default is last node
  * @return the value of targeted node
  */
 int List::read(const int position) const
@@ -111,9 +112,10 @@ int List::read(const int position) const
 /**
  * Changes the value of a node in the list
  * @param data number to change the value of the node to
- * @param position index of node to modify - default is last node
+ * @param position index of node to modify
+ * - default is last node
  */
-void List::modify(const int position, const int data) const
+void List::modify(const int data, const int position) const
 {
     Node* pNode = _head;
     int index = 0;
@@ -126,8 +128,9 @@ void List::modify(const int position, const int data) const
 }
 
 /**
- * Removes a node at a position
- * @param position the index for the node to remove - negative values will target head
+ * Removes the node at a position
+ * @param position the index for the node to remove
+ * - negative values will target head
  * @return the value of the removed node
  */
 int List::remove(const int position)

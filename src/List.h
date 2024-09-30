@@ -15,20 +15,21 @@ class List
         int data;
         Node* next;
     };
-    Node* _head;
-    int _size;
+    Node* _head;  // points to the first node in the list
+    int _size;  // is equal to the amount of nodes in the list
 public:
     // Constructors
-    List();
-    explicit List(int data);
-    ~List();  // Destructor
+    List();  // default constructor initializes empty list
+    explicit List(int data);  // prop constructor initializes with one node
 
-    int getSize() const;  // getter
+    ~List();  // deletes all nodes in the list
+
+    int getSize() const;  // returns _size
 
     // Member functions
     void insert(int data, int position = -1);
     [[nodiscard]] int read(int position) const;
-    void modify(int position, int data) const;
+    void modify(int data, int position) const;
     int remove(int position);
 };
 
