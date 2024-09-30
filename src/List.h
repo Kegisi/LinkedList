@@ -24,7 +24,7 @@ public:
 
     ~List();  // deletes all nodes in the list
 
-    int getSize() const;  // returns _size
+    [[nodiscard]] int getSize() const;  // returns _size
 
     // Member functions
     void insert(int data, int position = -1);
