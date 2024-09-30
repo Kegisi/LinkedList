@@ -6,7 +6,6 @@
  */
 
 #include "List.h"
-#include <climits>
 #include <iostream>
 
 /**
@@ -15,6 +14,7 @@
 List::List()
 {
     _head = nullptr;
+    _size = 0;
 }
 
 /**
@@ -24,6 +24,7 @@ List::List()
 List::List(const int data)
 {
     _head = new Node(data, nullptr);
+    _size = 1;
 }
 
 /**
@@ -51,61 +52,34 @@ List::~List()
  * - by default, appends to the end of the list
  * - negative numbers target head position
  */
-void List::insert(const int data, const int position)
+void List::insert(const int data, int position)
 {
-    Node* newNode = new Node{data, nullptr};
+    Node* pNewNode = new Node{data, nullptr};
 
-    // if list is empty make the new node the head
-    if (!_head)
+    if (position < 0 || position > _size)  // if the provided position is out of scope
     {
-        _head = newNode;
-        return;
+        position = _size;  // make it the end of the list so we append
     }
 
-    // add to start of the list if position is 0 or negative
-    if (position <= 0)
+    // insert at the start of the list
+    if (position == 0)
     {
-        newNode->next = _head;
-        _head = newNode;
-        return;
+        pNewNode->next = _head;
+        _head = pNewNode;
     }
-
-    // insert at a position other than 0
-    Node* pNode = _head;
-    int index = 0;
-    while (pNode->next && index < position - 1)
-        // subtract 1 because we're pointing to the next node
+    // insert anywhere else in the list, including the very end
+    else
     {
-        pNode = pNode->next;
-        index++;
-    }  // we are now either at the end of the list or at position
-    newNode->next = pNode->next;
-    pNode->next = newNode;
-}
-
-/**
- * Overloading function will insert a node to the end of the list
- * @param data the value to assign to the new node
- */
-void List::insert(const int data)
-{
-    Node* newNode = new Node{data, nullptr};
-
-    // if list is empty make the new node the head
-    if (!_head)
-    {
-        _head = newNode;
-        return;
+        Node* pNode = _head;
+        while (pNode->next && position > 1)
+            // when position is one, we've moved up to the node before the target
+        {
+            pNode = pNode->next;
+            position--;
+        }
+        pNewNode->next = pNode->next;
+        pNode->next = pNewNode;
     }
-
-    // insert at the end
-    Node* pNode = _head;
-    while (pNode->next)
-    {
-        pNode = pNode->next;
-    }
-    pNode->next = newNode;
-
 }
 
 /**
